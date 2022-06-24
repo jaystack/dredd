@@ -28,10 +28,14 @@ const teams = [
     { team: 'Hedgehog', cluster: 'D' },
     { team: 'Bull', cluster: 'D' },
 
-    { team: 'Cluster Winner A', cluster: 'E' },
-    { team: 'Cluster Winner B', cluster: 'E' },
-    { team: 'Cluster Winner C', cluster: 'E' },
-    { team: 'Cluster Winner D', cluster: 'E' },
+    { team: 'Cluster Winner A #1', cluster: 'E' },
+    { team: 'Cluster Winner A #2', cluster: 'E' },
+    { team: 'Cluster Winner B #1', cluster: 'E' },
+    { team: 'Cluster Winner B #2', cluster: 'E' },
+    { team: 'Cluster Winner C #1', cluster: 'E' },
+    { team: 'Cluster Winner C #2', cluster: 'E' },
+    { team: 'Cluster Winner D #1', cluster: 'E' },
+    { team: 'Cluster Winner D #2', cluster: 'E' },
 
 ]   
 
