@@ -9,6 +9,9 @@ export default function Home() {
   const [judges, setJudges] = useState([]);
   const [judge, setJudge] = useState(null);
   const [cluster, setCluster ] = useState(null);
+  const [teams, setTeams] = useState([]);
+  const [team, setTeam] = useState(null);
+  const [scoreItems, setScoreItems] = useState([]);
 
   
   const loadJudgesList = async () => {
@@ -21,16 +24,32 @@ export default function Home() {
     setJudge(j)
     setCluster(c)
 
-    
+    const response = await fetch('/api/teams');
+    const result = await response.json();    
+    const teams = result.filter(t => t.cluster === c);
+    setTeams(teams);
+  }
+
+  const selectTeam = async(t) => {
+    setTeam(t);
+    const response = await fetch('/api/scoreitems');
+    const result = await response.json();
+    setScoreItems(result)
+  }
+
+  const unselectTeam = async () => {
+    setTeam(null)
+  }
+
+  const setScore = async(si, s) => {
+    alert(si + ' ' + s)
   }
 
   useEffect(() => {
     loadJudgesList()
   }, []);
 
-  const pickJudge = async (j) => {
-    setJudge(j)
-  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -38,12 +57,13 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to Judge Dredd
-        </h1>
         {
         !judge &&
           <>
+          <h1 className={styles.title}>
+            Welcome to Judge Dredd Application
+          </h1>
+          <h2>Your Assesments Starts Now</h2>
           <h3>Who Are You?</h3>
           <ul>
           {judges.map(
@@ -55,7 +75,28 @@ export default function Home() {
         {
           judge &&
           <>
-            <h3>Welcome Judge {judge}</h3>
+            {teams.length && !team && 
+            <>
+            <h3>Select Team</h3>
+            <ul>
+              {teams.map(t => <li key={t.team}><a onClick={(e) => selectTeam(t.team)}>{t.team}</a></li>)}
+            </ul>
+            </>
+            }
+            {team && scoreItems.length &&
+            <>
+            <h3>Set Scores</h3>
+            <h4>Team {team}</h4>
+            <ul>
+              {scoreItems.map(s => <li key={s}><span style={{width:200}}>{s}</span>
+                <input 
+                onChange={(e) => setScore(s, e.target.value)}
+                placeholder='1..5' min={1} max={5} type="number" style={{width:50}}/></li>)}
+            </ul>
+            <a onClick={unselectTeam}>Go Back</a>
+            </>
+            }
+
           </> 
         }
       </main>

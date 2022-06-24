@@ -49,7 +49,7 @@ const judges = [
     {"name":"Michael Dyer","cluster":"D"},
     {"name":"Holly Garcia","cluster":"D"},
     {"name":"Nick Thomson","cluster":"E"},
-    {"name":"Emily Thomson","cluster":"E"},
+    {"name":"Alexis Shirtliff","cluster":"E"},
     {"name":"Nigel Wilson","cluster":"E"},
     {"name":"Matteo","cluster":"E"},
     {"name":"Jose Antonio","cluster":"E"},
