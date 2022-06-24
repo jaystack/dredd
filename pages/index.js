@@ -42,7 +42,9 @@ export default function Home() {
   }
 
   const setScore = async(si, s) => {
-    alert(si + ' ' + s)
+    //si: score item
+    //s: score
+    fetch('/api/scoreitems', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({scoreItem:si, score:s, team, judge})})
   }
 
   useEffect(() => {
