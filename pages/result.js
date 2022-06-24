@@ -56,7 +56,7 @@ export default function Home() {
           </h1>
           <ul>
           {result.map(team => {
-            return <li>{team.name} {Math.round(team._avg * 1000) / 1000}</li>
+            return <li key="{team.name}">{team.name} {Math.round(team._avg * 1000) / 1000}</li>
           })}
           </ul>
 
