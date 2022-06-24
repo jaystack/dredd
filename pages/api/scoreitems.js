@@ -18,8 +18,8 @@ export default async function handler(req, res) {
     if (req.body.team){
         scores[req.body.team]= scores[req.body.team]||{}
         scores[req.body.team][req.body.scoreItem] = scores[req.body.team][req.body.scoreItem]||{}
-        scores[req.body.team][req.body.scoreItem][req.body.judge] = parseInt(req.body.score)
-        console.log('kk',JSON.stringify(scores, null, 7));
+        scores[req.body.team][req.body.scoreItem][req.body.judge] = Math.min( Math.max( parseInt(req.body.score), 1), 5)
+        //console.log('kk',JSON.stringify(scores, null, 7));
     }
     res.json(scoreItems);
 }
