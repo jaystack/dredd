@@ -17,6 +17,9 @@ export default function Home() {
   const loadJudgesList = async () => {
     const response = await fetch('/api/judges');
     const result = await response.json();
+    result = result.sort(function(a, b) {
+      return b.name < a.name?1:-1;
+  });
     setJudges(result);
   }
 
